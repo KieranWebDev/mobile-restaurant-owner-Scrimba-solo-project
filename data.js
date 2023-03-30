@@ -18,9 +18,11 @@ export const menuArray = [
   {
     name: 'Beer',
     ingredients: ['grain, hops, yeast, water'],
-    price: 12,
+    price: 3,
     emoji: '🍺',
     id: 2,
     image: './images/beer.png',
   },
 ];
+
+export let cart = [];

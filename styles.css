@@ -120,3 +120,8 @@ header p {
   color: white;
   margin-bottom: 2rem;
 }
+/* utility */
+
+.hidden {
+  display: none;
+}
