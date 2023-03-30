@@ -19,7 +19,14 @@ body {
   margin: 2rem auto;
   max-width: 600px;
   border: 1px solid black;
+
   /* position: relative; */
+}
+main,
+.your-order-section,
+.menu-items-container,
+.confirm-message {
+  padding: 0 2rem;
 }
 /* headeer */
 header {
@@ -84,7 +91,6 @@ header p {
   margin-top: 2rem;
   font-weight: bold;
   font-size: 1.5rem;
-  padding: 0 2rem;
 }
 .your-order-section h3 {
   text-align: center;
@@ -137,6 +143,7 @@ header p {
   font-weight: 700;
   color: white;
   margin-bottom: 2rem;
+  cursor: pointer;
 }
 
 .modal {
@@ -154,6 +161,14 @@ header p {
   text-align: center;
   padding: 2rem;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal h1 {
+  padding: 1rem;
+  font-size: 2rem;
 }
 .modal h3 {
   font-size: 2rem;
@@ -191,4 +206,5 @@ form input {
   text-align: center;
   margin-bottom: 70px;
   margin-top: 40px;
+  font-size: 2.5rem;
 }

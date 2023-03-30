@@ -125,10 +125,20 @@ function makepayment(e) {
 function orderCompleteMessage(customerData) {
   const shoppingCartSection = document.querySelector('#your-order-section');
   const confirmMessage = document.querySelector('#confirm-message');
+  const modal = document.querySelector('#modal');
+  modal.innerHTML = `<img src="./images/833.svg" alt="">
+  <h1>Processing your order</h1>`;
 
-  togglePaymentModal();
+  setTimeout(() => {
+    togglePaymentModal();
 
-  shoppingCartSection.classList.add('hidden');
-  confirmMessage.classList.remove('hidden');
-  confirmMessage.textContent = `Thanks, ${customerData.name}! Your order is on its way!`;
+    shoppingCartSection.classList.add('hidden');
+    confirmMessage.classList.remove('hidden');
+    confirmMessage.textContent = `Thanks, ${customerData.name}! Your order is on its way!`;
+  }, 3000);
+  //   togglePaymentModal();
+
+  //   shoppingCartSection.classList.add('hidden');
+  //   confirmMessage.classList.remove('hidden');
+  //   confirmMessage.textContent = `Thanks, ${customerData.name}! Your order is on its way!`;
 }
