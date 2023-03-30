@@ -5,7 +5,7 @@ export const menuArray = [
     price: 14,
     emoji: '🍕',
     id: 0,
-    image: './images/pizza.jpg',
+    image: './images/pizza.png',
   },
   {
     name: 'Hamburger',
@@ -13,7 +13,7 @@ export const menuArray = [
     price: 12,
     emoji: '🍔',
     id: 1,
-    image: './images/hamburger.jpg',
+    image: './images/hamburger.png',
   },
   {
     name: 'Beer',
@@ -21,6 +21,6 @@ export const menuArray = [
     price: 12,
     emoji: '🍺',
     id: 2,
-    image: './images/beer.jpg',
+    image: './images/beer.png',
   },
 ];
