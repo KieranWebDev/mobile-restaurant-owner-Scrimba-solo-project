@@ -4,6 +4,7 @@ import { menuArray } from './data.js';
 const menuItemsContainer = document.querySelector('#menu-items-container');
 
 let cart = [];
+let orderComplete = false;
 
 // console.log(menuArray);
 document.addEventListener('click', (e) => {
@@ -28,7 +29,7 @@ function renderMenu() {
         <p class="ingredients">${item.ingredients}</p>
         <p class="price">$${item.price}</p>
     </div>
-    <button data-add-to-cart= ${item.id}> + </button>
+    <button id='add-to-cart-btn' data-add-to-cart= ${item.id}> + </button>
 </div>`;
     menuItemsContainer.innerHTML += menuItem;
   });
@@ -123,7 +124,7 @@ function makepayment(e) {
 }
 
 function orderCompleteMessage(customerData) {
-  const shoppingCartSection = document.querySelector('#your-order-section');
+  const menuItems = document.querySelector('#menu-items-container');
   const confirmMessage = document.querySelector('#confirm-message');
   const modal = document.querySelector('#modal');
   modal.innerHTML = `<img src="./images/833.svg" alt="">
@@ -132,13 +133,22 @@ function orderCompleteMessage(customerData) {
   setTimeout(() => {
     togglePaymentModal();
 
-    shoppingCartSection.classList.add('hidden');
+    menuItems.classList.add('hidden');
     confirmMessage.classList.remove('hidden');
     confirmMessage.textContent = `Thanks, ${customerData.name}! Your order is on its way!`;
+    document.querySelector('.btn').disabled = true;
+    document.querySelectorAll('#remove-item-btn').forEach((button) => {
+      button.disabled = true;
+    });
+    // orderComplete = true;
   }, 3000);
+  //   disableButtons();
   //   togglePaymentModal();
 
   //   shoppingCartSection.classList.add('hidden');
   //   confirmMessage.classList.remove('hidden');
   //   confirmMessage.textContent = `Thanks, ${customerData.name}! Your order is on its way!`;
 }
+// function disableButtons() {
+
+// }
