@@ -13,9 +13,10 @@ document.addEventListener('click', (e) => {
     removeFromCart(e.target.dataset.removeItem);
   } else if (e.target.id === 'complete-order-btn') {
     togglePaymentModal();
-  } else if (e.target.id === 'make-payment-button') {
-    makepayment(e);
   }
+  //   else if (e.target.id === 'make-payment-button') {
+  //     makepayment(e);
+  //   }
 });
 
 function renderMenu() {
@@ -105,8 +106,10 @@ function togglePaymentModal() {
   document.querySelector('#modal-overlay').classList.toggle('hidden');
 }
 
+const form = document.querySelector('form');
+form.addEventListener('submit', makepayment);
+
 function makepayment(e) {
-  const form = document.querySelector('form');
   e.preventDefault();
   const formData = new FormData(form);
 
@@ -118,7 +121,8 @@ function makepayment(e) {
   console.log(customerData);
   orderCompleteMessage(customerData);
 }
-function orderCompleteMessage() {
+
+function orderCompleteMessage(customerData) {
   const shoppingCartSection = document.querySelector('#your-order-section');
   const confirmMessage = document.querySelector('#confirm-message');
 
