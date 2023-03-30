@@ -9,6 +9,9 @@ let cart = [];
 document.addEventListener('click', (e) => {
   if (e.target.dataset.addToCart) {
     addToCart(e.target.dataset.addToCart);
+  } else if (e.target.dataset.removeItem) {
+    // console.log(e.target.dataset.removeItem);
+    removeFromCart(e.target.dataset.removeItem);
   }
 });
 
@@ -48,17 +51,26 @@ function addToCart(itemID) {
       name: selectedItem.name,
       quantity: 1,
       price: selectedItem.price,
+      id: selectedItem.id,
     };
     cart.push(itemForCart);
   }
 
-  console.log(cart);
+  //   console.log(cart);
   renderCart(cart);
+  return cart;
+}
+
+function removeFromCart(itemToRemove) {
+  cart = cart.filter((item) => item.id !== Number(itemToRemove));
+  renderCart(cart);
+  return cart;
 }
 
 function renderCart(cart) {
   const shoppingCart = document.querySelector('#order-items-container');
   const ShoppingCartSection = document.querySelector('#your-order-section');
+  console.log(cart.length);
 
   shoppingCart.innerHTML = '';
   cart.length > 0
@@ -73,13 +85,15 @@ function renderCart(cart) {
       <p class="item-name">${item.name} ${
       item.quantity > 1 ? `(x${item.quantity})` : ''
     }</p>
-      <button id="remove-item-btn" class="remove-item-btn">remove</button>
+      <button data-remove-item = ${
+        item.id
+      } id="remove-item-btn" class="remove-item-btn">remove</button>
       <p class="item-price">$${item.price * item.quantity}</p>
   </div>`;
 
     totalPrice += item.price * item.quantity;
     shoppingCart.innerHTML += cartItem;
   });
-  console.log(totalPrice);
+
   document.querySelector('#total-price').textContent = `$${totalPrice}`;
 }

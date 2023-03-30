@@ -69,6 +69,13 @@ header p {
   font-weight: 200;
   color: #3c3c3c;
   margin-left: auto;
+  cursor: pointer;
+}
+.menu-item button:hover,
+.menu-item button:active {
+  background-color: #16db99;
+  color: white;
+  transition: all ease-in 0.2s;
 }
 /* your order section */
 .your-order-section {
@@ -98,7 +105,16 @@ header p {
   font-size: 12px;
   color: #bbbbbb;
   align-self: center;
+  cursor: pointer;
 }
+.remove-item-btn:hover,
+.remove-item-btn:active {
+  /* font-weight: 800; */
+  color: #16db99;
+  text-decoration: underline;
+  transition: all ease-in 0.1s;
+}
+
 .item-price {
   margin-left: auto;
 }
