@@ -10,8 +10,11 @@ document.addEventListener('click', (e) => {
   if (e.target.dataset.addToCart) {
     addToCart(e.target.dataset.addToCart);
   } else if (e.target.dataset.removeItem) {
-    // console.log(e.target.dataset.removeItem);
     removeFromCart(e.target.dataset.removeItem);
+  } else if (e.target.id === 'complete-order-btn') {
+    togglePaymentModal();
+  } else if (e.target.id === 'make-payment-button') {
+    makepayment(e);
   }
 });
 
@@ -69,13 +72,13 @@ function removeFromCart(itemToRemove) {
 
 function renderCart(cart) {
   const shoppingCart = document.querySelector('#order-items-container');
-  const ShoppingCartSection = document.querySelector('#your-order-section');
+  const shoppingCartSection = document.querySelector('#your-order-section');
   console.log(cart.length);
 
   shoppingCart.innerHTML = '';
   cart.length > 0
-    ? ShoppingCartSection.classList.remove('hidden')
-    : ShoppingCartSection.classList.add('hidden');
+    ? shoppingCartSection.classList.remove('hidden')
+    : shoppingCartSection.classList.add('hidden');
 
   let totalPrice = 0;
 
@@ -96,4 +99,32 @@ function renderCart(cart) {
   });
 
   document.querySelector('#total-price').textContent = `$${totalPrice}`;
+}
+function togglePaymentModal() {
+  document.querySelector('#modal').classList.toggle('hidden');
+  document.querySelector('#modal-overlay').classList.toggle('hidden');
+}
+
+function makepayment(e) {
+  const form = document.querySelector('form');
+  e.preventDefault();
+  const formData = new FormData(form);
+
+  const customerData = {
+    name: formData.get('customerName'),
+    cardNumber: formData.get('cardNumber'),
+    customerCVV: formData.get('CVV'),
+  };
+  console.log(customerData);
+  orderCompleteMessage(customerData);
+}
+function orderCompleteMessage() {
+  const shoppingCartSection = document.querySelector('#your-order-section');
+  const confirmMessage = document.querySelector('#confirm-message');
+
+  togglePaymentModal();
+
+  shoppingCartSection.classList.add('hidden');
+  confirmMessage.classList.remove('hidden');
+  confirmMessage.textContent = `Thanks, ${customerData.name}! Your order is on its way!`;
 }

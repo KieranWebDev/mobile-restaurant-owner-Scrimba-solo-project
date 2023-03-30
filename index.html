@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="./styles.css">
     <title>Mobile Restaurant App</title>
 </head>
-<div class="app-container">
 
+<div class="app-container">
     <header>
         <h1>Jimmy's Diner</h1>
         <p>The best burgers and pizzas in town</p>
@@ -65,12 +65,29 @@
             <p>Total</p>
             <p id="total-price">$14</p>
         </div>
-        <button class="complete-order-btn" id="complete-order-btn">Complete order</button>
+        <button class="btn" id="complete-order-btn">Complete order</button>
     </section>
+
+    <section id="modal" class="modal hidden">
+        <h3>Enter Card Details</h3>
+        <form>
+            <input type="text" placeholder='Enter Your Name' id="customerName" name="customerName"
+                aria-label="Enter Your Name" required>
+            <input type="text" placeholder='Enter card number' id="cardNumber" name="cardNumber"
+                aria-label=" Enter card number" required>
+            <input type="text" placeholder='Enter CVV' id="customerName" name="CVV" aria-label=" Enter CVV" required>
+            <button id="make-payment-button" class="btn" type="submit">Pay</button>
+        </form>
+    </section>
+    <div id='modal-overlay' class="hidden overlay"></div>
+
+    <h2 id="confirm-message" class=" hidden confirm-message">Thanks, James! Your order is on its way!</h2>
+
 </div>
 
 <body>
     <script type="module" src="./javascript.js"></script>
+
 </body>
 
 </html>
