@@ -14,80 +14,49 @@
     <title>Mobile Restaurant App</title>
 </head>
 
-<div class="app-container">
-    <header>
-        <h1>Jimmy's Diner</h1>
-        <p>The best burgers and pizzas in town</p>
-    </header>
-
-    <main id='menu-items-container' class="menu-items-container">
-
-        <!-- <div class="menu-item">
-            <img src="./images/pizza.png" alt="pizza">
-            <div class="menu-item-info">
-                <h3 class="menu-item-name">Pizza</h3>
-                <p class="ingredients">ingredients</p>
-                <p class="price">$14</p>
-            </div>
-            <button> + </button>
-        </div>
-
-        <div class="menu-item">
-            <img src="./images/pizza.png" alt="pizza">
-            <div class="menu-item-info">
-                <h3 class="menu-item-name">Pizza</h3>
-                <p class="ingredients">ingredients</p>
-                <p class="price">$14</p>
-            </div>
-            <button> + </button>
-        </div>
-        <div class="menu-item">
-            <img src="./images/pizza.png" alt="pizza">
-            <div class="menu-item-info">
-                <h3 class="menu-item-name">Pizza</h3>
-                <p class="ingredients">ingredients</p>
-                <p class="price">$14</p>
-            </div>
-            <button> + </button>
-        </div> -->
-    </main>
-    <h2 id="confirm-message" class=" hidden confirm-message"></h2>
-    <section id="your-order-section" class="your-order-section hidden">
-        <h3>Your order</h3>
-
-        <div class="order-items-container" id="order-items-container">
-            <!-- <div class="order-item">
-                <p class="item-name">Pizza</p>
-                <button id="remove-item-btn" class="remove-item-btn">remove</button>
-                <p class="item-price">$14</p>
-            </div> -->
-        </div>
-
-        <div class="total-price">
-            <p>Total</p>
-            <p id="total-price">$14</p>
-        </div>
-        <button class="btn" id="complete-order-btn">Complete order</button>
-    </section>
-
-    <section id="modal" class="modal hidden">
-        <h3>Enter Card Details</h3>
-        <form>
-            <input type="text" placeholder='Enter Your Name' id="customerName" name="customerName"
-                aria-label="Enter Your Name" required>
-            <input type="text" placeholder='Enter card number' id="cardNumber" name="cardNumber"
-                aria-label=" Enter card number" required>
-            <input type="text" placeholder='Enter CVV' id="customerName" name="CVV" aria-label=" Enter CVV" required>
-            <button id="make-payment-button" class="btn" type="submit">Pay</button>
-        </form>
-    </section>
-    <div id='modal-overlay' class="hidden overlay"></div>
-
-
-
-</div>
-
 <body>
+    <div class="app-container">
+        <header>
+            <h1>Jimmy's Diner</h1>
+            <p>The best burgers and pizzas in town</p>
+        </header>
+
+        <main id='menu-items-container' class="menu-items-container">
+            <!-- menu item rendered here -->
+
+        </main>
+        <h2 id="confirm-message" class=" hidden confirm-message"></h2>
+        <section id="your-order-section" class="your-order-section hidden">
+            <h3>Your order</h3>
+            <div class="order-items-container" id="order-items-container">
+                <!-- order items rendered here -->
+            </div>
+
+            <div class="total-price">
+                <p>Total</p>
+                <p id="total-price">$14</p>
+            </div>
+            <button class="btn" id="complete-order-btn">Complete order</button>
+        </section>
+
+        <!-- modal rendered upon clicking of order button -->
+        <section id="modal" class="modal hidden">
+            <button class="modal-close" id="modal-close" type="button">X</button>
+            <h3>Enter Card Details</h3>
+            <form>
+                <input type="text" placeholder='Enter Your Name' id="customerName" name="customerName"
+                    aria-label="Enter Your Name" required>
+                <input type="text" placeholder='Enter card number' id="cardNumber" name="cardNumber"
+                    aria-label=" Enter card number" required>
+                <input type="text" placeholder='Enter CVV' id="customerName" name="CVV" aria-label=" Enter CVV"
+                    required>
+                <button id="make-payment-button" class="btn" type="submit">Pay</button>
+            </form>
+        </section>
+        <div id='modal-overlay' class="hidden overlay"></div>
+    </div>
+
+
     <script type="module" src="./javascript.js"></script>
 
 </body>

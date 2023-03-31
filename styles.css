@@ -80,9 +80,7 @@ header p {
   margin-left: auto;
   cursor: pointer;
 }
-.menu-item button:disabled {
-  display: none;
-}
+
 .menu-item button:hover,
 .menu-item button:active {
   background-color: #16db99;
@@ -125,7 +123,7 @@ header p {
   text-decoration: underline;
   transition: all ease-in 0.1s;
 }
-.remove-item-btn {
+.remove-item-btn:disabled {
   display: none;
 }
 .item-price {
@@ -190,6 +188,19 @@ header p {
   width: 100%;
   gap: 1rem;
 }
+.modal-close {
+  align-self: flex-end;
+  font-size: 1.5rem;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.modal-close:hover,
+.modal-close:active {
+  color: #16db99;
+}
+
 form input {
   font-size: 1.5rem;
   padding: 1rem;

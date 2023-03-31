@@ -4,9 +4,7 @@ import { menuArray } from './data.js';
 const menuItemsContainer = document.querySelector('#menu-items-container');
 
 let cart = [];
-let orderComplete = false;
 
-// console.log(menuArray);
 document.addEventListener('click', (e) => {
   if (e.target.dataset.addToCart) {
     addToCart(e.target.dataset.addToCart);
@@ -15,9 +13,6 @@ document.addEventListener('click', (e) => {
   } else if (e.target.id === 'complete-order-btn') {
     togglePaymentModal();
   }
-  //   else if (e.target.id === 'make-payment-button') {
-  //     makepayment(e);
-  //   }
 });
 
 function renderMenu() {
@@ -102,6 +97,12 @@ function renderCart(cart) {
 
   document.querySelector('#total-price').textContent = `$${totalPrice}`;
 }
+
+document.querySelector('#modal-close').addEventListener('click', () => {
+  document.querySelector('#modal-overlay').classList.toggle('hidden');
+  document.querySelector('#modal').classList.toggle('hidden');
+});
+
 function togglePaymentModal() {
   document.querySelector('#modal').classList.toggle('hidden');
   document.querySelector('#modal-overlay').classList.toggle('hidden');
@@ -140,7 +141,7 @@ function orderCompleteMessage(customerData) {
     document.querySelectorAll('#remove-item-btn').forEach((button) => {
       button.disabled = true;
     });
-    // orderComplete = true;
+    orderComplete = true;
   }, 3000);
   //   disableButtons();
   //   togglePaymentModal();
