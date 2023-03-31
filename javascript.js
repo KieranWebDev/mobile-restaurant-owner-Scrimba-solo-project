@@ -16,6 +16,7 @@ document.addEventListener('click', (e) => {
 });
 
 function renderMenu() {
+  // Loop through the menuArray and create an HTML string for each item, which includes its name, image, ingredients, and price
   menuArray.forEach((item) => {
     let menuItem = ` <div class="menu-item">
     <img src="${item.image}" alt="pizza">
@@ -33,30 +34,24 @@ function renderMenu() {
 renderMenu();
 
 function addToCart(itemID) {
+  // Convert the itemID to a number and find the corresponding menu item in the menuArray
   itemID = Number(itemID);
-
-  // get selected item
   const selectedItem = menuArray.filter((food) => food.id === itemID)[0];
 
-  // check if the item is already in the cart
+  // Check if the selected item is already in the cart; if so, increment its quantity, otherwise add it to the cart
   const itemInCart = cart.find((item) => item.name === selectedItem.name);
-
-  // if the item is already in the cart, increase its quantity by 1
   if (itemInCart) {
     itemInCart.quantity++;
-  }
-  // if the item is not in the cart, add it to the cart
-  else {
-    const itemForCart = {
+  } else {
+    const cartItem = {
       name: selectedItem.name,
       quantity: 1,
       price: selectedItem.price,
       id: selectedItem.id,
     };
-    cart.push(itemForCart);
+    cart.push(cartItem);
   }
-
-  //   console.log(cart);
+  // Render the updated cart
   renderCart(cart);
   return cart;
 }
@@ -68,17 +63,18 @@ function removeFromCart(itemToRemove) {
 }
 
 function renderCart(cart) {
+  // Get the shopping cart container and the section that shows the cart total
   const shoppingCart = document.querySelector('#order-items-container');
   const shoppingCartSection = document.querySelector('#your-order-section');
-  console.log(cart.length);
 
+  // Clear the shopping cart and hide the section if there are no items in the cart
   shoppingCart.innerHTML = '';
   cart.length > 0
     ? shoppingCartSection.classList.remove('hidden')
     : shoppingCartSection.classList.add('hidden');
 
+  // Loop through the cart items and create an HTML string for each one, which includes its name, quantity, price, and a remove button
   let totalPrice = 0;
-
   cart.forEach((item) => {
     let cartItem = `
   <div class="order-item">
@@ -94,10 +90,11 @@ function renderCart(cart) {
     totalPrice += item.price * item.quantity;
     shoppingCart.innerHTML += cartItem;
   });
-
+  // Display the total price of all items in the cart
   document.querySelector('#total-price').textContent = `$${totalPrice}`;
 }
 
+// modal / complete order logic
 document.querySelector('#modal-close').addEventListener('click', () => {
   document.querySelector('#modal-overlay').classList.toggle('hidden');
   document.querySelector('#modal').classList.toggle('hidden');
@@ -109,18 +106,22 @@ function togglePaymentModal() {
 }
 
 const form = document.querySelector('form');
+
 form.addEventListener('submit', makepayment);
 
 function makepayment(e) {
+  // Prevent the form from submitting normally
   e.preventDefault();
-  const formData = new FormData(form);
 
+  // Get the form data and create an object with the customer's name, card number, and CVV
+  const formData = new FormData(form);
   const customerData = {
     name: formData.get('customerName'),
     cardNumber: formData.get('cardNumber'),
     customerCVV: formData.get('CVV'),
   };
-  console.log(customerData);
+
+  // Display a message indicating that the order is being processed
   orderCompleteMessage(customerData);
 }
 
@@ -133,23 +134,18 @@ function orderCompleteMessage(customerData) {
 
   setTimeout(() => {
     togglePaymentModal();
-
+    // after 3 seconds, hide the menu items container and show the confirmation message
     menuItems.classList.add('hidden');
     confirmMessage.classList.remove('hidden');
+
+    // display the confirmation message with the customer's name and
     confirmMessage.textContent = `Thanks, ${customerData.name}! Your order is on its way!`;
+
+    // Disable the checkout button and all 'remove item' buttons
     document.querySelector('.btn').disabled = true;
     document.querySelectorAll('#remove-item-btn').forEach((button) => {
       button.disabled = true;
     });
     orderComplete = true;
   }, 3000);
-  //   disableButtons();
-  //   togglePaymentModal();
-
-  //   shoppingCartSection.classList.add('hidden');
-  //   confirmMessage.classList.remove('hidden');
-  //   confirmMessage.textContent = `Thanks, ${customerData.name}! Your order is on its way!`;
 }
-// function disableButtons() {
-
-// }
